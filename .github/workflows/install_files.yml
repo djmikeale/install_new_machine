@@ -10,4 +10,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Run install script
-        run: bash scripts/10_install_files.sh
+        run: bash main.sh
