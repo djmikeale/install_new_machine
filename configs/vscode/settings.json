@@ -1,0 +1,75 @@
+{
+    "dbt.listModelsDisabled": true, // Disable listing models in the dbt extension
+    "dbt.queryTemplate": "select * from ({query}) as query limit {limit}", // Set the query template for dbt queries
+    "editor.stickyScroll.enabled": true, // Enable sticky scroll in the editor
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true, // Use independent color pool per bracket type for bracket pair colorization
+    "editor.cursorBlinking": "smooth", // Set cursor blinking to smooth
+    "editor.cursorSmoothCaretAnimation": "explicit", // Set cursor caret animation to explicit
+    "editor.find.autoFindInSelection": "multiline", // Set search scope to multiline when searching within a selection
+    "editor.minimap.autohide": true, // Automatically hide the minimap when there is no vertical scrollbar
+    "editor.snippetSuggestions": "top", // Show snippets at the top of the suggestion list
+    "explorer.confirmDragAndDrop": false, // Disable confirmation dialog when dragging and dropping files in the explorer
+    "explorer.confirmDelete": false, // Disable confirmation dialog when deleting files in the explorer
+    "findrelated.workspaceRulesets": [ // this is so you can easily jump to your compiled SQL files
+        {
+            "name": "sql",
+            "rules": [
+                {
+                    "pattern": "^(.*/)?models/(.*/)?(.+\\.sql)$",
+                    "locators": [
+                        "**/compiled/**/$3"
+                    ]
+                },
+                {
+                    "pattern": "^(.*/)?compiled/(.*/)?(.+\\.sql)$",
+                    "locators": [
+                        "**/run/**/$3"
+                    ]
+                },
+                {
+                    "pattern": "^(.*/)?run/(.*/)?(.+\\.sql)$",
+                    "locators": [
+                        "**/models/**/$3"
+                    ]
+                }
+            ]
+        }
+    ],
+    "findrelated.applyRulesets": [
+        "sql"
+    ],
+    "files.associations": { // Associate .sql files with the jinja-sql extension
+        "*.sql": "jinja-sql"
+    },
+    "files.insertFinalNewline": true, // Automatically insert a final newline when saving files
+    "files.trimTrailingWhitespace": true, // Automatically trim trailing whitespace when saving files
+    "files.trimFinalNewlines": true, // Automatically trim final newlines when saving files
+    "git.autofetch": true, // Automatically fetch changes from remote Git repositories
+    "gitlens.advanced.similarityThreshold": 10, // Set the similarity threshold for gitlens
+    "gitlens.codeLens.enabled": false, // Disable git code lens
+    "notebook.output.textLineLimit": 100, // Set the maximum number of lines to display for notebook output cells
+    "terminal.external.osxExec": "iTerm.app", // Use iTerm as the default terminal application on macOS
+    "terminal.integrated.fontFamily": "MesloLGL Nerd Font Mono", // Set the font family for the integrated terminal
+    "redhat.telemetry.enabled": true, // Enable usage data and errors to be sent to Red Hat servers.
+    "[python]": { // Apply the following settings when editing Python files
+        "editor.formatOnType": true // Automatically format code when typing
+    },
+    "python.interpreter.infoVisibility": "always", // Show interpreter information in the status bar
+    "python.venvPath": "~/lunar-way-hubble-transformations/.venv", // Set the path for the Python virtual environment
+    "search.useGlobalIgnoreFiles": true, // Use global ignore files when searching for files
+    "search.useParentIgnoreFiles": true, // Use parent ignore files when searching for files
+    "screencastMode.mouseIndicatorSize": 30, // Set the size of the mouse indicator in screencast mode
+    "scm.defaultViewMode": "tree", // Set the default view mode for the source control panel to tree
+    "sqlfluff.executablePath": "/Users/mikaelthorup/lunar-way-hubble-transformations/.venv/bin/sqlfluff", // Set the path for the SQLfluff executable
+    "terminal.explorerKind": "external", // Use an external terminal instance when opening a new terminal in the explorer
+    "terminal.integrated.enableMultiLinePasteWarning": false, // Disable warning when pasting multiline text in the terminal
+    "terminal.integrated.cursorStyle": "line", // Set the cursor style in the integrated terminal to a line
+    "terminal.integrated.fontSize": 13, // Set the font size in the integrated terminal to 13
+    "terminal.integrated.letterSpacing": 1, // Set the letter spacing in the integrated terminal to 1
+    "terminal.integrated.tabs.location": "left", // Set the location of the terminal tabs to the left side of the panel
+    "workbench.editorAssociations": { // Associate CSV files with an extension for displaying them
+        "*.csv": "gc-excelviewer-csv-editor"
+    },
+    "workbench.sash.size": 10, // Set the size of the editor sash
+    "workbench.startupEditor": "readme" // Open the README file by default on startup
+}

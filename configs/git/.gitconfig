@@ -1,0 +1,28 @@
+[alias]
+    b = "!f()  { git branch | fzf --preview 'git diff master..$(cut -c 3- <<< {}) --stat-width=80 --color=always' --preview-window=80 | xargs git checkout; }; f"
+    linear = "!f() { git branch | grep -E '[a-z,A-Z]+-[0-9]+' | fzf | grep -o -E '[a-z,A-Z]+-[0-9]+' | xargs -I{} open 'https://linear.app/lunar/issue/{}'; }; f"
+    pr = "!f() { gh pr list --json number,title,headRefName,updatedAt,author --template '{{range .}}{{tablerow .number (timeago .updatedAt) .title .author.name .headRefName}}{{end}}' | fzf | awk '{print $1}' | xargs -r gh pr view --web; }; f"
+    delete-local-merged = "!git fetch && git branch --merged | egrep -v 'master|dev|main|staging'  | xargs git branch -d"
+[branch]
+    sort = -committerdate
+    autoSetupMerge = simple
+[column]
+    ui = auto
+[core]
+    editor = code --wait
+[fetch]
+    prune = true
+[pull]
+    rebase = false
+[push]
+    autoSetupRemote = true
+    default = current
+[status]
+    short = true
+[user]
+    email = mhthorup@gmail.com
+    name = Mikael Thorup
+[help]
+    autocorrect = 5
+[url "git@github.com:"]
+    insteadOf = https://github.com/
