@@ -145,6 +145,8 @@ declare -a apps=(
     '/System/Applications/Photos.app'
     '/Applications/Qobuz.app'
     '/Applications/Native Instruments/Traktor Pro 3/Traktor.app'
+    '/System/Applications/Calendar.app'
+    '/System/Applications/Reminders.app'
 );
 
 declare -a folders=(
