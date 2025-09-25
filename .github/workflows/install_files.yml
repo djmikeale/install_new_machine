@@ -5,9 +5,9 @@ on:
 
 jobs:
   install:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Run install script
-        run: bash shell_files/10_install_files.sh
+        run: bash scripts/10_install_files.sh
