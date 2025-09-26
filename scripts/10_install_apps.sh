@@ -16,6 +16,7 @@ else
 fi
 
 # Make sure brew is in PATH
+append_if_missing ~/.zprofile 'eval "$(/opt/homebrew/bin/brew shellenv)"'
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Update Homebrew
@@ -24,19 +25,18 @@ brew update
 brew upgrade
 brew cleanup
 
-# Configure Homebrew in shell
-append_if_missing ~/.zprofile 'eval "$(/opt/homebrew/bin/brew shellenv)"'
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# ---------- Formulae ----------
+# Formulae
 homebrew_apps=(
     bat
     ffmpeg
+    fzf
     gh
     git
     jq
+    pyenv
     tree
-    fzf
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -50,7 +50,7 @@ for app in "${homebrew_apps[@]}"; do
     fi
 done
 
-# ---------- Oh My Zsh ----------
+# Oh My Zsh
 echo "=== Installing oh-my-zsh ==="
 if [ ! -d "${ZSH:-$HOME/.oh-my-zsh}" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -58,13 +58,12 @@ else
     echo "✓ oh-my-zsh already installed"
 fi
 
-
 # give man and --help pages pretty colours
 append_if_missing ~/.zshrc 'export MANPAGER="sh -c '\''col -bx | bat -l man -p'\''"'
 append_if_missing ~/.zshrc "alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'"
 append_if_missing ~/.zshrc "alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'"
 
-# ---------- Powerlevel10k ----------
+# Powerlevel10k
 echo "=== Installing Powerlevel10k theme ==="
 if [ ! -d "$HOME/powerlevel10k" ]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
@@ -73,26 +72,33 @@ else
     echo "✓ Powerlevel10k already installed"
 fi
 
-# ---------- Zsh Plugins ----------
+# Pyenv setup
+echo "=== Setting up pyenv ==="
+global_python_version="3.12.6"
+pyenv install "$global_python_version"
+pyenv global "$global_python_version"
+
+
+# Zsh Plugins
 echo "=== Configuring Zsh plugins ==="
 append_if_missing ~/.zshrc "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 append_if_missing ~/.zshrc "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 append_if_missing ~/.zshrc "source <(fzf --zsh)"
 
-# ---------- Cask Apps ----------
+# Cask Apps
 homebrew_cask_apps=(
+    alt-tab
     bettertouchtool
     firefox
     google-chrome
     iterm2
     obsidian
+    qobuz
     raycast
     slack
+    time-out
     transmission
     visual-studio-code
-    qobuz
-    alt-tab
-    time-out
 )
 
 for app in "${homebrew_cask_apps[@]}"; do
@@ -105,7 +111,7 @@ for app in "${homebrew_cask_apps[@]}"; do
 done
 
 
-# ---------- Firefox ----------
+# Firefox
 if command -v firefox &>/dev/null; then
     open -a "Firefox" --args --make-default-browser
 fi
