@@ -16,8 +16,7 @@ trap "echo 'Break reminder stopped'; exit 0" SIGINT SIGTERM
 
 while true; do
     # worrr wor worrr woor work
-    sleep 5
-    #sleep $(($WORK_INTERVAL_MIN * 60))
+    sleep $(($WORK_INTERVAL_MIN * 60))
     ((counter++))
 
     # break
