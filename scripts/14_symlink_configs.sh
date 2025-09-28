@@ -8,10 +8,13 @@ CONFIG_DIR="$(cd "$(dirname "$0")/.." && pwd)/configs"
 # Map config subfolders to their target locations
 # Add mappings as needed
 # Format: subfolder target_path
+
+# Not tested: traktor
 CONFIG_MAP=(
     "git" "$HOME/.config/git"
     "powerlevel10k" "$HOME/.config/powerlevel10k"
     "vscode" "$HOME/Library/Application Support/Code/User"
+    "traktor" "$HOME/Documents/Native Instruments/Traktor 3.11.1/Traktor Settings.tsi"
 )
 
 for ((i=1; i<${#CONFIG_MAP[@]}; i+=2)); do
