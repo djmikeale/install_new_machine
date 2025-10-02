@@ -115,3 +115,6 @@ done
 if command -v firefox &>/dev/null; then
     open -a "Firefox" --args --make-default-browser
 fi
+
+# Install/upgrade uv (Astral)
+curl -LsSf https://astral.sh/uv/install.sh | sh
